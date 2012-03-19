@@ -1,3 +1,13 @@
 = MobileAppManager
 
-This project rocks and uses MIT-LICENSE.
+Installation
+
+require "mobile_app_manager" in config/application.rb
+Mount the engine in config/routes.rb
+
+Install migrations
+rake mobile_app_manager:install:migrations
+
+Run migrations
+rake db:migrate
+
