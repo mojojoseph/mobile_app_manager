@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20120319184328) do
   create_table "mobile_app_manager_mobileapps", :force => true do |t|
     t.string   "name"
     t.string   "version"
-    t.string   "type"
+    t.string   "platform"
     t.string   "install_url"
     t.string   "relnotes_url"
     t.datetime "created_at",   :null => false
