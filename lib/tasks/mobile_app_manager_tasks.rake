@@ -47,7 +47,7 @@ namespace :ios do
   end
 
   task :insert_record => :environment do
-    puts Mobileapp.all.inspect
+    puts MobileAppManager::Mobileapp.all.inspect
   end
 
 end
