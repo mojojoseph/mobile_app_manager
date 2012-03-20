@@ -50,6 +50,9 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.17.2)
     multi_json (1.1.0)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-ssh (2.3.0)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -94,4 +97,5 @@ PLATFORMS
 DEPENDENCIES
   jquery-rails
   mobile_app_manager!
+  net-scp
   sqlite3
