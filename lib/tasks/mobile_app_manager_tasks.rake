@@ -46,8 +46,37 @@ namespace :ios do
     system "ant -f #{build_script} publish"
   end
 
-  task :insert_record => :environment do
-    puts MobileAppManager::Mobileapp.all.inspect
+  desc "Publishes iOS build to the remote server"
+  task :publish_build => :environment, :create_publish_files do
+    build_root         = Rails.root.join "mobileapps/"
+    configuration_file = build_root.join 'mobileapps.yml'
+    build_config       = YAML::load(File.open(configuration_file))
+
+    ios_build_dir = build_root.join build_config['ios']['directory']
+
+    # Dirty way, just iterate over all of the files and pick the ones
+    # we want, namely the .ipa and .plist
+    ios_build_dir.each_child do |f|
+      if f.extname == ".ipa" then
+        puts "IPA #{f}"
+      end
+
+      if f.extname == ".plist" then
+        puts "Plist #{f}"
+      end
+    end
+
+  end
+
+  desc "Insert a mobile app build record"
+  task :insert_app_record => :environment, :publish_build do
+    app = MobileAppManager::Mobileapp.new
+    app.name     = "UplinkRemote"
+    app.version  = "1.1.3"      # this should be from environment
+    app.platform = "iOS"        # We know this because of the namespace
+    app.install_url = "itms-services://?action=download-manifest&url=public/mobileapps/com.mooveit.uplink.1.2.4.plist" # Needs to be a reference to a plist
+    app.relnotes_url = ""
+    app.save!
   end
 
 end
