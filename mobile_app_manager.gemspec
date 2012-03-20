@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = "Summary of MobileAppManager"
   s.description = "Description of MobileAppManager"
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib,recipes}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.2.2"
