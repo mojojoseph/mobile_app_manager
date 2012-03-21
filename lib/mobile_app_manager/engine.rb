@@ -1,5 +1,6 @@
 module MobileAppManager
   class Engine < ::Rails::Engine
-    isolate_namespace MobileAppManager
+# Rails 3.1
+#    isolate_namespace MobileAppManager
   end
 end
