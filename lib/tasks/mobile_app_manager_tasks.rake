@@ -29,7 +29,7 @@ namespace :mobile_app_manager do
     end
     
     desc "Insert a mobile app build record"
-    task :insert_app_record => :environment, :publish_build do
+    task :insert_app_record => :environment do
       app = MobileAppManager::Mobileapp.new
       app.name     = "UplinkRemote"
       app.version  = "1.1.3"      # this should be from environment
