@@ -46,28 +46,6 @@ namespace :ios do
     system "ant -f #{build_script} publish"
   end
 
-  desc "Publishes iOS build to the remote server"
-  task :publish_build => :environment, :create_publish_files do
-    build_root         = Rails.root.join "mobileapps/"
-    configuration_file = build_root.join 'mobileapps.yml'
-    build_config       = YAML::load(File.open(configuration_file))
-
-    ios_build_dir = build_root.join build_config['ios']['directory']
-
-    # Dirty way, just iterate over all of the files and pick the ones
-    # we want, namely the .ipa and .plist
-    ios_build_dir.each_child do |f|
-      if f.extname == ".ipa" then
-        puts "IPA #{f}"
-      end
-
-      if f.extname == ".plist" then
-        puts "Plist #{f}"
-      end
-    end
-
-  end
-
   desc "Insert a mobile app build record"
   task :insert_app_record => :environment, :publish_build do
     app = MobileAppManager::Mobileapp.new
